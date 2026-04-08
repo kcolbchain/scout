@@ -1,0 +1,16 @@
+# scout alpha-wallet list — addresses worth following.
+#
+# These are wallets identified through on-chain analysis of historical
+# airdrop claimers (Arbitrum, Optimism, Jito, Jupiter) and high-volume
+# cross-chain users. Following them surfaces protocols with anomalous
+# smart-money activity — useful for both airdrop research and
+# market intelligence.
+
+wallets:
+  - address: "0x2c169dfe5fbba12957bdd0ba47d9cedbfe260ca7"
+    label: "early-arb-claimer-1"
+    tags: [airdrop_hunter, multi_chain]
+
+  - address: "0x4838b106fce9647bdf1e7877bf73ce8b0bad5f97"
+    label: "layerzero-whale"
+    tags: [bridge_heavy, smart_money]

@@ -1,0 +1,18 @@
+# Known contract address → protocol name map.
+# Used by scout.activity.identify_protocol() to label transactions.
+#
+# All addresses must be lowercase. Add freely; PRs welcome.
+
+contracts:
+  # Uniswap
+  "0x68b3465833fb72a70ecdf485e0e4c7bd8665fc45": uniswap_v3_router2
+  "0xe592427a0aece92de3edee1f18e0157c05861564": uniswap_v3_router
+  "0x7a250d5630b4cf539739df2c5dacb4c659f2488d": uniswap_v2_router
+  "0x3fc91a3afd70395cd496c647d5a6cc9d4b2b7fad": uniswap_universal
+
+  # Aggregators
+  "0x1111111254eeb25477b68fb85ed929f73a960582": "1inch"
+  "0xdef1c0ded9bec7f1a1670819833240f027b25eff": "0x_protocol"
+
+  # Other DEXes
+  "0xd9e1ce17f2641f24ae83637ab66a2cca9c378b9f": sushiswap

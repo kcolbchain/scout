@@ -13,6 +13,16 @@ wallet reputation scoring, governance intelligence, and ecosystem mapping.
 
 from .registry import Registry, Target, Confidence
 from .scoring import FitScorer, FitScore
+from .activity import WalletTracker, WalletActivity, TrackedWallet
 
 __version__ = "0.1.0"
-__all__ = ["Registry", "Target", "Confidence", "FitScorer", "FitScore"]
+__all__ = [
+    "Registry",
+    "Target",
+    "Confidence",
+    "FitScorer",
+    "FitScore",
+    "WalletTracker",
+    "WalletActivity",
+    "TrackedWallet",
+]
