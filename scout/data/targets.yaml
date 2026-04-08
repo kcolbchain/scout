@@ -1,0 +1,127 @@
+# scout target registry — curated protocol intelligence database.
+#
+# Schema:
+#   name:            (required) protocol name
+#   chain:           single chain id, or "multi" for cross-chain
+#   category:        bridge | dex | lending | l2 | infra | defi | nft | social
+#   confidence:      high | medium | low | claimed
+#   contracts:       list of key contract addresses to interact with
+#   criteria:        free-form dict of fit criteria (consumed by FitScorer)
+#   tags:            list of free-form tags for cross-cutting filters
+#   notes:           why this target is on the list
+#   priority_score:  0-10 manual curation score
+
+targets:
+  # ===== L2 / L1 launches with token plans =====
+  - name: Berachain
+    chain: berachain
+    category: l2
+    confidence: high
+    priority_score: 9.0
+    tags: [pol, evm]
+    criteria:
+      testnet_activity: true
+      mainnet_launch: "Q2 2026"
+      bgt_staking: true
+    notes: "Proof of Liquidity consensus. BGT token confirmed. Mainnet live, airdrop criteria being finalized."
+
+  - name: Monad
+    chain: monad
+    category: l2
+    confidence: high
+    priority_score: 9.0
+    tags: [parallel-evm, paradigm]
+    criteria:
+      testnet_activity: true
+      mainnet_launch: "2026"
+      raised: "$225M"
+    notes: "Parallel EVM L1. $225M raised (Paradigm). Testnet live. No token yet."
+
+  - name: Linea
+    chain: linea
+    category: l2
+    confidence: high
+    priority_score: 8.5
+    tags: [zkevm, consensys]
+    contracts:
+      - "0x508Aa4F4e15A305300B9D2d0E602BDb57FBf3442"
+    criteria:
+      bridge_volume: ">0.1 ETH"
+      dex_swaps: ">5"
+      unique_months: ">3"
+    notes: "Consensys zkEVM L2. Voyage program for points. LXP tokens tracking activity."
+
+  - name: Scroll
+    chain: scroll
+    category: l2
+    confidence: medium
+    priority_score: 7.0
+    tags: [zkevm]
+    contracts:
+      - "0xD8A791fE2bE73eb6E6cF1eb0cb3F36adC9B3F8f9"
+    criteria:
+      bridge_usage: true
+      dex_interaction: true
+      session_marks: true
+    notes: "zkEVM L2. SCR token launched but more airdrops expected. Marks program active."
+
+  # ===== Bridges / interop =====
+  - name: LayerZero
+    chain: multi
+    category: bridge
+    confidence: medium
+    priority_score: 6.5
+    tags: [omnichain]
+    criteria:
+      cross_chain_messages: ">50"
+      unique_chains: ">3"
+      organic_activity: true
+    notes: "Omnichain messaging. ZRO token exists but more distributions possible. Anti-sybil checks aggressive."
+
+  - name: Hyperlane
+    chain: multi
+    category: infra
+    confidence: medium
+    priority_score: 6.5
+    tags: [interop, permissionless]
+    criteria:
+      message_relay: true
+      validator_run: true
+    notes: "Permissionless interoperability. Raised $18.5M. No token yet."
+
+  # ===== DEX / DeFi =====
+  - name: Ambient (CrocSwap)
+    chain: scroll
+    category: dex
+    confidence: medium
+    priority_score: 6.0
+    tags: [clamm]
+    criteria:
+      swap_volume: ">$1000"
+      lp_provision: true
+    notes: "DEX on Scroll. No token. Growing TVL."
+
+  # ===== Restaking / points programs =====
+  - name: EigenLayer
+    chain: ethereum
+    category: infra
+    confidence: high
+    priority_score: 7.5
+    tags: [restaking]
+    criteria:
+      restake_eth: true
+      avs_delegate: true
+      eigen_points: true
+    notes: "Restaking. EIGEN token exists, ongoing point seasons for additional drops."
+
+  - name: Ethena
+    chain: ethereum
+    category: defi
+    confidence: medium
+    priority_score: 6.0
+    tags: [synthetic-dollar]
+    criteria:
+      usde_mint: true
+      sats_campaign: true
+      sena_stake: true
+    notes: "USDe synthetic dollar. Sats campaign for points. Multiple airdrop seasons."
