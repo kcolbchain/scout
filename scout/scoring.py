@@ -17,6 +17,7 @@ from dataclasses import dataclass, field
 from typing import Protocol
 
 from .registry import Target
+from .cluster import cluster_penalty
 
 
 class WalletLike(Protocol):
@@ -77,7 +78,13 @@ class FitScorer:
       long-term user    (≥30 unique active days)         → 10 pts
     """
 
-    def score(self, wallet: WalletLike, target: Target) -> FitScore:
+    def score(
+        self,
+        wallet: WalletLike,
+        target: Target,
+        clusters: dict | None = None,
+        cluster_factor: float = 0.0,
+    ) -> FitScore:
         met: list[str] = []
         missing: list[str] = []
         recs: list[str] = []
@@ -152,10 +159,15 @@ class FitScorer:
         if criteria.get("lp_provision"):
             recs.append(f"Provide liquidity on {target.name}")
 
+        raw = min(s, 100.0)
+        if clusters:
+            mult = cluster_penalty(wallet.address, clusters, factor=cluster_factor)
+            raw *= mult
+
         return FitScore(
             target=target.name,
             wallet=wallet.address,
-            score=min(s, 100.0),
+            score=raw,
             met=met,
             missing=missing,
             recommendations=recs,
