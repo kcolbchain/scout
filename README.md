@@ -99,6 +99,22 @@ PRs adding entries are welcome. Keep entries factual; cite a source in `notes` w
 - **Not a graph database.** Single Python module, YAML data, no service to run.
 - **Not opinionated about backends.** Etherscan v2 is the default but `ActivityBackend` is a 3-line interface — plug in whatever you want.
 
+## Supported Backends
+
+| Backend | Chains | Env Var | Notes |
+|---------|--------|---------|-------|
+| `EtherscanBackend` | ethereum, arbitrum, optimism, base, polygon, bsc, scroll, linea | `ETHERSCAN_API_KEY` | Default. Uses Etherscan v2 unified API. |
+| `BasescanBackend` | base | `BASESCAN_API_KEY` | Dedicated Base chain backend. Fetches normal txs, ERC-20 transfers, and internal txs. |
+
+```python
+# Use BasescanBackend for Base-only tracking
+from scout.backends.basescan import BasescanBackend
+from scout.activity import WalletTracker
+
+backend = BasescanBackend(api_key="YOUR_BASESCAN_KEY")
+tracker = WalletTracker(backend=backend)
+```
+
 ## Used by
 
 - [monsoon](https://github.com/kcolbchain/monsoon) — autonomous airdrop farming agents
