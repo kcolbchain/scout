@@ -14,6 +14,7 @@ wallet reputation scoring, governance intelligence, and ecosystem mapping.
 from .registry import Registry, Target, Confidence
 from .scoring import FitScorer, FitScore
 from .activity import WalletTracker, WalletActivity, TrackedWallet
+from .backends import BasescanBackend
 
 __version__ = "0.1.0"
 __all__ = [
@@ -25,4 +26,5 @@ __all__ = [
     "WalletTracker",
     "WalletActivity",
     "TrackedWallet",
+    "BasescanBackend",
 ]

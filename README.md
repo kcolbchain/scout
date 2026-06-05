@@ -82,6 +82,10 @@ python -m scout categories
 ETHERSCAN_API_KEY=YOUR_KEY python -m scout follow
 ```
 
+Supported activity chains include `ethereum`, `arbitrum`, `optimism`, `base`,
+`polygon`, `bsc`, `scroll`, and `linea`. For Base-specific tracking, use
+`BasescanBackend` from `scout.backends`.
+
 ## Data files
 
 The curated assets live in [`scout/data/`](scout/data/) as YAML so they can be edited, versioned, and contributed:

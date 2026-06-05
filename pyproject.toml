@@ -39,7 +39,7 @@ Documentation = "https://docs.kcolbchain.com/scout/"
 Repository = "https://github.com/kcolbchain/scout"
 
 [tool.setuptools]
-packages = ["scout"]
+packages = ["scout", "scout.backends"]
 
 [tool.setuptools.package-data]
 scout = ["data/*.yaml"]
