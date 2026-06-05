@@ -6,7 +6,7 @@
 
 - **Registry** — a curated, queryable database of protocols (Targets) with metadata: chain, category, confidence, criteria, contracts, notes, priority. Loaded from YAML so you can edit, fork, and contribute without code changes.
 - **FitScorer** — scores any wallet against any target's criteria (0–100 with met / missing / recommendations breakdown). Works for airdrop eligibility, allowlist gating, lending risk, KYC-lite reputation — anywhere you ask "does this wallet match these requirements?"
-- **WalletTracker** — follows a set of wallets across chains, aggregates protocol signals. Etherscan v2 backend by default, pluggable for Alchemy / Covalent / your own indexer.
+- **WalletTracker** — follows a set of wallets across chains, aggregates protocol signals. Etherscan v2 backend by default (Ethereum, Arbitrum, Optimism) and Basescan (Base), pluggable for Alchemy / Covalent / your own indexer.
 
 By [kcolbchain](https://kcolbchain.com) (est. 2015). The intelligence layer that powers [monsoon](https://github.com/kcolbchain/monsoon) airdrop research, but useful far beyond airdrops.
 
