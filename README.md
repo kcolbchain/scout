@@ -97,7 +97,7 @@ PRs adding entries are welcome. Keep entries factual; cite a source in `notes` w
 - **Not a trading bot.** scout is read-only intelligence; it never signs or broadcasts transactions.
 - **Not an airdrop farmer.** monsoon is the farming agent; scout is the research substrate it consumes.
 - **Not a graph database.** Single Python module, YAML data, no service to run.
-- **Not opinionated about backends.** Etherscan v2 is the default but `ActivityBackend` is a 3-line interface — plug in whatever you want.
+- **Not opinionated about backends.** Etherscan v2 is the default but `ActivityBackend` is a 3-line interface — plug in whatever you want. Dedicated backends like `BasescanBackend` for Base are also included.
 
 ## Used by
 
