@@ -71,23 +71,36 @@ targets:
     category: bridge
     confidence: medium
     priority_score: 6.5
-    tags: [omnichain]
+    tags: [omnichain, interop, airdrop]
+    contracts:
+      - "0x1a44076050125825900e736c501f859c50fE728c"  # EndpointV2, Ethereum
+      - "0x1a44076050125825900e736c501f859c50fE728c"  # EndpointV2, Arbitrum One
+      - "0x1a44076050125825900e736c501f859c50fE728c"  # EndpointV2, Base
     criteria:
       cross_chain_messages: ">50"
       unique_chains: ">3"
       organic_activity: true
-    notes: "Omnichain messaging. ZRO token exists but more distributions possible. Anti-sybil checks aggressive."
+    source_links:
+      - "https://docs.layerzero.network/v2/deployments/deployed-contracts"
+    notes: "Omnichain messaging. Track EndpointV2 sends across Ethereum, Arbitrum, and Base; ZRO token exists but more distributions possible. Source: LayerZero deployed contracts docs."
 
   - name: Hyperlane
     chain: multi
     category: infra
     confidence: medium
     priority_score: 6.5
-    tags: [interop, permissionless]
+    tags: [interop, permissionless, airdrop]
+    contracts:
+      - "0xc005dc82818d67AF737725bD4bf75435d065D239"  # Mailbox, Ethereum
+      - "0x979C69E4e37cC932Ac0d0456BDcD111372c3cD48"  # Mailbox, Arbitrum One
+      - "0x6966b0E55883d49BFB24539356a2f8A673E02039"  # Mailbox, Base
     criteria:
       message_relay: true
       validator_run: true
-    notes: "Permissionless interoperability. Raised $18.5M. No token yet."
+      unique_chains: ">2"
+    source_links:
+      - "https://docs.hyperlane.xyz/docs/reference/contract-addresses"
+    notes: "Permissionless interoperability. Track Mailbox dispatches across Ethereum, Arbitrum, and Base; raised $18.5M and historically used interchain activity for eligibility signals. Source: Hyperlane contract address docs."
 
   # ===== DEX / DeFi =====
   - name: Ambient (CrocSwap)
@@ -107,12 +120,18 @@ targets:
     category: infra
     confidence: high
     priority_score: 7.5
-    tags: [restaking]
+    tags: [restaking, avs, airdrop]
+    contracts:
+      - "0x858646372CC42E1A627fcE94aa7A7033e7CF075A"  # StrategyManager
+      - "0x39053D51B77DC0d36036Fc1fCc8Cb819df8Ef37A"  # DelegationManager
+      - "0x91E677b07F7AF907ec9a428aafA9fc14a0d3A338"  # EigenPodManager
     criteria:
       restake_eth: true
       avs_delegate: true
       eigen_points: true
-    notes: "Restaking. EIGEN token exists, ongoing point seasons for additional drops."
+    source_links:
+      - "https://docs.eigencloud.xyz/products/eigenlayer/developers/mainnet-contracts"
+    notes: "Restaking protocol on Ethereum. Track StrategyManager deposits, DelegationManager operator delegation, and EigenPodManager native restaking interactions. Source: EigenLayer mainnet contracts docs."
 
   - name: Ethena
     chain: ethereum
