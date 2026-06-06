@@ -72,11 +72,13 @@ targets:
     confidence: medium
     priority_score: 6.5
     tags: [omnichain]
+    contracts:
+      - "0x66a71dcef29a0ffbdbe3c6a460a3b5bc225cd675"
     criteria:
       cross_chain_messages: ">50"
       unique_chains: ">3"
       organic_activity: true
-    notes: "Omnichain messaging. ZRO token exists but more distributions possible. Anti-sybil checks aggressive."
+    notes: "Omnichain messaging. ZRO token exists but more distributions possible. Source: https://docs.layerzero.network/v2/deployments/chains/ethereum and https://github.com/LayerZero-Labs."
 
   - name: Hyperlane
     chain: multi
@@ -84,10 +86,12 @@ targets:
     confidence: medium
     priority_score: 6.5
     tags: [interop, permissionless]
+    contracts:
+      - "0xd4C1905BB1D26BC93DAC913e13CaCC278CdCC80D"
     criteria:
       message_relay: true
       validator_run: true
-    notes: "Permissionless interoperability. Raised $18.5M. No token yet."
+    notes: "Permissionless interoperability. Raised $18.5M. No token yet. Source: https://docs.hyperlane.xyz/ and https://github.com/hyperlane-xyz/hyperlane-monorepo/blob/main/rust/main/chains/hyperlane-ethereum/src/contracts/mailbox.rs."
 
   # ===== DEX / DeFi =====
   - name: Ambient (CrocSwap)
@@ -108,11 +112,17 @@ targets:
     confidence: high
     priority_score: 7.5
     tags: [restaking]
+    contracts:
+      - "0x39053D51B77DC0d36036Fc1fCc8Cb819df8Ef37A"
+      - "0x858646372CC42E1A627fcE94aa7A7033e7CF075A"
+      - "0x91E677b07F7AF907ec9a428aafA9fc14a0d3A338"
+      - "0x135dda560e946695d6f155dacafc6f1f25c1f5af"
+      - "0x7750d328b314EfFa365A0402CcfD489B80B0adda"
     criteria:
       restake_eth: true
       avs_delegate: true
       eigen_points: true
-    notes: "Restaking. EIGEN token exists, ongoing point seasons for additional drops."
+    notes: "Restaking. EIGEN token exists, ongoing point seasons for additional drops. Source: https://raw.githubusercontent.com/Layr-Labs/eigenlayer-contracts/main/README.md and https://docs.eigencloud.xyz/eigenlayer/developers/concepts/eigenlayer-contracts/deployed-contracts."
 
   - name: Ethena
     chain: ethereum
