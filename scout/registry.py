@@ -11,7 +11,7 @@ from __future__ import annotations
 
 import logging
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import datetime, timezone
 from enum import Enum
 from importlib import resources
 from pathlib import Path
@@ -104,7 +104,7 @@ class Registry:
             tags=d.get("tags", []) or [],
             notes=d.get("notes", ""),
             priority_score=float(d.get("priority_score", 0.0)),
-            last_updated=datetime.utcnow(),
+            last_updated=datetime.now(timezone.utc),
         )
 
     # ---------- queries ----------
@@ -144,7 +144,7 @@ class Registry:
         if t is None:
             return False
         t.confidence = confidence
-        t.last_updated = datetime.utcnow()
+        t.last_updated = datetime.now(timezone.utc)
         self._sort()
         return True
 

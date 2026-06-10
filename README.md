@@ -1,5 +1,7 @@
 # scout
 
+[![CI](https://github.com/kcolbchain/scout/actions/workflows/ci.yml/badge.svg)](https://github.com/kcolbchain/scout/actions/workflows/ci.yml)
+
 > On-chain wallet and protocol intelligence primitives. Registry, fit scoring, activity tracking.
 
 `scout` is a small Python library for systematic on-chain research. Three composable parts:

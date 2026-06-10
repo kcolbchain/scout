@@ -1,7 +1,7 @@
 """Tests for FitScorer."""
 
 from dataclasses import dataclass, field
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 from scout import FitScorer, Target, Confidence
 
@@ -10,7 +10,7 @@ from scout import FitScorer, Target, Confidence
 class FakeActivity:
     chain: str
     action: str
-    timestamp: datetime = field(default_factory=datetime.utcnow)
+    timestamp: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
 
 
 @dataclass
