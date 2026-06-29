@@ -28,7 +28,7 @@ dependencies = [
 
 [project.optional-dependencies]
 activity = ["aiohttp>=3.9"]
-dev = ["pytest>=7.0", "aiohttp>=3.9"]
+dev = ["pytest>=7.0", "pytest-asyncio>=0.23", "aiohttp>=3.9"]
 
 [project.scripts]
 scout = "scout.cli:main"
@@ -37,6 +37,9 @@ scout = "scout.cli:main"
 Homepage = "https://kcolbchain.com"
 Documentation = "https://docs.kcolbchain.com/scout/"
 Repository = "https://github.com/kcolbchain/scout"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
 
 [tool.setuptools]
 packages = ["scout"]

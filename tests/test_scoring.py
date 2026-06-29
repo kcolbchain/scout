@@ -119,3 +119,36 @@ def test_score_grades():
     assert fake_score.grade == "B"
     fake_score.score = 45
     assert fake_score.grade == "C"
+
+
+def test_score_all_ranks_better_fit_first_and_reports_gaps():
+    """score_all sorts results descending; the unmet target reports gaps.
+
+    The wallet has 5 swaps but no bridge activity. Against a DEX target it
+    should out-score a bridge target, and the bridge target's FitScore should
+    surface the missing criterion plus an actionable recommendation.
+    """
+    scorer = FitScorer()
+    wallet = FakeWallet(activity=[
+        FakeActivity("arbitrum", "Swap 0.01 ETH for USDC") for _ in range(5)
+    ])
+    dex_target = Target(
+        name="DexProto", chain="arbitrum", category="dex",
+        confidence=Confidence.HIGH, criteria={"dex_swaps": ">5"},
+    )
+    bridge_target = Target(
+        name="BridgeProto", chain="ethereum", category="bridge",
+        confidence=Confidence.HIGH, criteria={"bridge_volume": ">0.1 ETH"},
+    )
+
+    results = scorer.score_all(wallet, [bridge_target, dex_target])
+
+    # Sorted descending by score regardless of input order.
+    assert [r.score for r in results] == sorted((r.score for r in results), reverse=True)
+    assert results[0].target == "DexProto"
+    assert results[0].score > results[1].score
+
+    bridge_result = next(r for r in results if r.target == "BridgeProto")
+    assert any("Bridge activity" in m for m in bridge_result.missing)
+    assert any("BridgeProto".lower() in r.lower() or "bridge" in r.lower()
+               for r in bridge_result.recommendations)
